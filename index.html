@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Price Prediction System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="header">
+        <header>
+            <h1>Property Price Prediction System</h1>
+            <p>Your one-stop destination for property and plot!</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#container">Property</a></li>
+                <li><a href="#highlights">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section class="banner">
+                <h2>The Best Place to Find Home!</h2>
+                <p>Explore our vast records of plots, apartments,<br> bungalows and everything your heart desires.</p>
+                <button><a href="#container">Go To Property</a></button>
+            </section>
+        </main>
+    </div>
+        
+    <div class="container" id="container">
+        <h2>Enter The Data</h2>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <label>Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                    <label>Age</label>
+                    <input type="text" placeholder="Enter your age" required>
+                </div>
+                <div class="input-box">
+                    <label>City</label>
+                    <input type="text" placeholder="Enter the city" required>
+                </div>
+                <div class="input-box">
+                    <label>Area</label>
+                    <input type="text" placeholder="Enter the area" required>
+                </div>
+                <div class="input-box">
+                    <label>Landmark</label>
+                    <input type="text" placeholder="Enter a landmark" required>
+                </div>
+                <div class="input-box">
+                    <label>Plot</label>
+                    <input type="text" placeholder="Enter the plot type" required>
+                </div>
+                <div class="input-box">
+                    <label>Square Feet</label>
+                    <input type="text" placeholder="Enter the size" required>
+                </div>
+                <div class="input-box">
+                    <label>Availability</label>
+                    <input type="date" required>
+                </div>
+            </div>
+        </form>
+        <button class="save-btn">Enter Data</button>
+    </div>
+
+    <div class="highlights" id="highlights">
+        <h2>Who Are We?</h2>
+        <div class="about-us">
+            <div class="about-us-content">
+                <p>Property Price Prediction System is a website designed by the students of Team-8 of batch - BCS3B, dedicated to provide reasonable and calculated price of any plot/property. <br>The software uses ML techniques and historical data to analyze and predict approximate prices of the plot, thereby removing extra and unjust charges. The aim is to deliver performance worthy of its calibre and become a cornerstone of reliability in modern market of unpredictable and volatile plot expenditure.</p>
+            </div>
+            <div class="about-us-image">
+                <img src="https://miro.medium.com/v2/resize:fit:1170/1*UiJhPq3xNzyQwMFU48ThrQ.jpeg" alt="">
+            </div>
+        </div>
+        <h2>Why Choose Property Price Prediction System?</h2>
+        <div class="row">
+            <div class="highlights-col">
+                <h3>Better Informed Decisions</h3>
+                <p>Property Price Prediction System provides data-driven estimates of a property's value, allowing buyers, sellers, and investors to make informed choices.</p>
+            </div>
+            <div class="highlights-col">
+                <h3>Reduced Risk</h3>
+                <p>By understanding potential property values, investors can assess risk and identify better opportunities.</p>
+            </div>
+            <div class="highlights-col">
+                <h3>Market Efficiency</h3>
+                <p>Property Price Prediction System can help streamline the real estate market by offering a more objective valuation method.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-us" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-col">
+            <form>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <br>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <br>
+                <label for="message">Message</label>
+                <textarea name="message" rows="10" id="message" placeholder="Message" required></textarea>
+                <button type="submit" class="save-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+      
+
+
+
+
+    <script>
+        save_btn = document.querySelector(".save-btn");
+
+        save_btn.onclick = function(){
+            this.innerHTML = "<div class='loader'></div>";
+            setTimeout(() => {
+                this.innerHTML = "Data Entered";
+                this.style = "background: #55bf52; color: #000; pointer-events: none";
+            }, 2000)
+        }
+    </script>
+</body>
+</html>

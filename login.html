@@ -1,0 +1,132 @@
+<!-- SIGNUP
+Name, Surname, email-address, username, aadhar card number, submit
+
+SIGN-IN/LOGIN
+Username, password -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up and Sign-In</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container.active {
+            display: flex;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin-top: 25px;
+        }
+        input {
+            border-radius: 10px;
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 30px 30px;
+            border-radius: 10px;
+            border-width: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="signup-container" class="container active">
+        <h1>Sign-Up</h1>
+        <form id="signup-form">
+            <input type="text" id="firstname" placeholder="First Name" required>
+            <input type="text" id="lastname" placeholder="Last Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="text" id="username-signup" placeholder="Username" required>
+            <input type="text" id="aadhar" placeholder="Aadhar Card Number" required>
+            <button type="button" onclick="handleSignUp()">Submit</button>
+        </form>
+    </div>
+
+    <div id="signin-container" class="container">
+        <h2>Sign-In</h2>
+        <form id="signin-form">
+            <input type="text" id="username-signin" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" onclick="handleSignIn()">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        let users = {};
+
+        function handleSignUp() {
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username-signup').value;
+            const aadhar = document.getElementById('aadhar').value;
+
+            if (users[username]) {
+                alert('Username already exists. Please choose another one.');
+                return;
+            }
+
+            if (!firstname || !lastname || !email || !username || !aadhar) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            users[username] = {
+                firstname,
+                lastname,
+                email,
+                aadhar
+            };
+
+            if(!users[username].firstname){
+                if(!(users[username].email)){
+                    alert('Invalid Signup! Please fill in all the values.');
+                }
+            }
+            else{
+                console.log('Sign-Up Data:', users);
+
+                document.getElementById('signup-container').classList.remove('active');
+                document.getElementById('signin-container').classList.add('active');
+                return 1;
+            }
+        }
+
+        function handleSignIn() {
+            const username = document.getElementById('username-signin').value;
+            const password = document.getElementById('password').value; // In a real app, you would handle passwords securely.
+            const user_password = password;
+            users[username] = {
+                password
+            }
+
+            if (users[username]) {
+                console.log('Sign-In Successful for user:', users[username]);
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid username or password.');
+            }
+        }
+    </script>
+</body>
+</html>
