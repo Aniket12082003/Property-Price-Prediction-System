@@ -124,7 +124,7 @@ label{
     border-radius: 7px;
     box-sizing: border-box;
 }
-.save-btn{
+form .save-btn{
     font-size: 17px;
     color: black;
     background-color: #bbbbbb;

@@ -69,8 +69,8 @@
                     <input type="date" required>
                 </div>
             </div>
+            <button class="save-btn">Enter Data</button>
         </form>
-        <button class="save-btn">Enter Data</button>
     </div>
 
     <div class="highlights" id="highlights">
@@ -118,19 +118,30 @@
     </div>
       
 
-
-
-
     <script>
-        save_btn = document.querySelector(".save-btn");
-
-        save_btn.onclick = function(){
-            this.innerHTML = "<div class='loader'></div>";
+        const saveBtn = document.querySelector(".save-btn");
+        const form = saveBtn.closest("form");
+        const ageInput = form.querySelector("input[type='text'][placeholder='Enter your age']");
+        form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const enteredAge = parseInt(ageInput.value);
+        if (form.checkValidity() && enteredAge >= 18) {
+            saveBtn.innerHTML = "<div class='loader'></div>";
             setTimeout(() => {
-                this.innerHTML = "Data Entered";
-                this.style = "background: #55bf52; color: #000; pointer-events: none";
-            }, 2000)
+            saveBtn.innerHTML = "Data Entered";
+            saveBtn.style = "background: #55bf52; color: #000; pointer-events: none";
+            console.log("Form data is valid and can be processed!");
+            }, 2000);
+        } else {
+            if (enteredAge < 18) {
+            alert("You must be 18 years or older to submit the form.");
+            } else {
+            alert("Please fill in all required fields before submitting.");
+            form.reportValidity();
+            }
         }
-    </script>
+        });
+      </script>
+      
 </body>
 </html>
